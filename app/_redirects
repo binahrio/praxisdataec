@@ -1,0 +1,12 @@
+# Netlify Redirects
+# Redirect all routes to index.html for SPA behavior (if needed)
+
+# Main page
+/ /index.html 200
+
+# Applications page
+/aplicaciones /aplicaciones.html 200
+/aplicaciones.html /aplicaciones.html 200
+
+# Custom 404
+/* /index.html 404

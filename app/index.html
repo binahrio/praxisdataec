@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praxis Data | Protección de Datos Personales - Ecuador</title>
+    <meta name="description" content="Servicio de mitigación de riesgos reputacionales, económicos y operacionales derivados del tratamiento de datos personales en Ecuador.">
+    <link rel="icon" type="image/png" href="/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #0a1628;
+            --color-secondary: #1a2744;
+            --color-accent: #c9a227;
+            --color-accent-light: #e5c76b;
+            --color-text: #f8f9fa;
+            --color-text-muted: #a0aec0;
+            --color-bg: #0a1628;
+            --color-card: #1a2744;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        .logo-text span {
+            color: var(--color-accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--color-text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a227' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--color-text);
+        }
+
+        .hero-text h1 .highlight {
+            color: var(--color-accent);
+        }
+
+        .hero-slogan {
+            font-size: 1.25rem;
+            color: var(--color-accent-light);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            border-left: 3px solid var(--color-accent);
+            padding-left: 1rem;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--color-accent);
+            color: var(--color-primary);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-accent-light);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(201, 162, 39, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--color-text);
+            border: 2px solid var(--color-accent);
+        }
+
+        .btn-secondary:hover {
+            background: var(--color-accent);
+            color: var(--color-primary);
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: auto;
+            border-radius: 16px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .floating-card {
+            position: absolute;
+            background: var(--color-card);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .floating-card.card-1 {
+            top: 10%;
+            right: -20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .floating-card.card-2 {
+            bottom: 15%;
+            left: -30px;
+            animation: float 3s ease-in-out infinite 1.5s;
+        }
+
+        .floating-card .icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .floating-card .text {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+        }
+
+        .floating-card .value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-accent);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Services Section */
+        .services {
+            padding: 6rem 2rem;
+            background: var(--color-bg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(201, 162, 39, 0.1);
+            color: var(--color-accent);
+            font-size: 0.875rem;
+            font-weight: 600;
+            border-radius: 50px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--color-card);
+            border-radius: 16px;
+            padding: 2.5rem;
+            border: 1px solid rgba(201, 162, 39, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--color-accent), var(--color-accent-light));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(201, 162, 39, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: rgba(201, 162, 39, 0.15);
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(201, 162, 39, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-accent);
+        }
+
+        .service-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 1rem;
+        }
+
+        .service-description {
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .service-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            color: var(--color-accent);
+            font-weight: 700;
+        }
+
+        /* Process Section */
+        .process {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, var(--color-secondary) 0%, var(--color-bg) 100%);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .process-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 40px;
+            right: -1rem;
+            width: 2rem;
+            height: 2px;
+            background: var(--color-accent);
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--color-card);
+            border: 2px solid var(--color-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--color-accent);
+            margin: 0 auto 1.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .step-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 0.75rem;
+        }
+
+        .step-description {
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+            line-height: 1.6;
+        }
+
+        /* Target Section */
+        .target {
+            padding: 6rem 2rem;
+            background: var(--color-bg);
+        }
+
+        .target-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .target-card {
+            background: var(--color-card);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(201, 162, 39, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .target-card:hover {
+            border-color: var(--color-accent);
+            transform: translateY(-3px);
+        }
+
+        .target-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .target-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .target-desc {
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230a1628' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        .cta-text {
+            font-size: 1.2rem;
+            color: var(--color-primary);
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .cta .btn-primary {
+            background: var(--color-primary);
+            color: var(--color-text);
+        }
+
+        .cta .btn-primary:hover {
+            background: var(--color-secondary);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 2rem;
+            background: var(--color-bg);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--color-text);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            color: var(--color-text-muted);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .contact-details {
+            list-style: none;
+        }
+
+        .contact-details li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+            color: var(--color-text-muted);
+        }
+
+        .contact-details .icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(201, 162, 39, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-accent);
+            font-size: 1.25rem;
+        }
+
+        .contact-form {
+            background: var(--color-card);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(201, 162, 39, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--color-text);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            background: var(--color-primary);
+            border: 1px solid rgba(201, 162, 39, 0.2);
+            border-radius: 8px;
+            color: var(--color-text);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.1);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--color-text-muted);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            width: 100%;
+            padding: 1rem;
+            background: var(--color-accent);
+            color: var(--color-primary);
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .form-submit:hover {
+            background: var(--color-accent-light);
+            transform: translateY(-2px);
+        }
+
+        .form-message {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .form-message.success {
+            display: block;
+            background: rgba(34, 197, 94, 0.1);
+            color: #22c55e;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .form-message.error {
+            display: block;
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-primary);
+            padding: 3rem 2rem 2rem;
+            border-top: 1px solid rgba(201, 162, 39, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .footer-logo img {
+            height: 40px;
+        }
+
+        .footer-logo span {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            color: var(--color-text);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-accent);
+        }
+
+        .footer-copy {
+            width: 100%;
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(201, 162, 39, 0.1);
+            color: var(--color-text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-cta {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .hero-image-container {
+                max-width: 350px;
+            }
+
+            .floating-card {
+                display: none;
+            }
+
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-step:nth-child(2)::after {
+                display: none;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--color-primary);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                border-top: 1px solid rgba(201, 162, 39, 0.2);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 7rem 1.5rem 3rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero-slogan {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .process-step::after {
+                display: none !important;
+            }
+
+            .services,
+            .process,
+            .target,
+            .cta,
+            .contact {
+                padding: 4rem 1.5rem;
+            }
+
+            .service-card {
+                padding: 1.75rem;
+            }
+
+            .contact-form {
+                padding: 1.75rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="/logo.png" alt="Praxis Data Logo">
+                <span class="logo-text">PRAXIS <span>DATA</span></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#proceso">Proceso</a></li>
+                <li><a href="#aplicaciones">Aplicaciones</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Protegemos tu <span class="highlight">Data</span>,<br>Cuidamos tu <span class="highlight">Reputación</span></h1>
+                <p class="hero-slogan">Servicio de mitigación de riesgos reputacionales, económicos y operacionales derivados del tratamiento de datos personales.</p>
+                <p class="hero-description">Expertos en protección de datos para el sector salud en Ecuador. Anticipamos y neutralizamos riesgos antes de que se conviertan en sanciones, reclamos o daños reputacionales irreversibles.</p>
+                <div class="hero-cta">
+                    <a href="#contacto" class="btn btn-primary">Solicitar Diagnóstico</a>
+                    <a href="#servicios" class="btn btn-secondary">Conocer Servicios</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-image-container">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=600&h=500&fit=crop" alt="Protección de Datos" class="hero-image">
+                    <div class="floating-card card-1">
+                        <div class="icon">🛡️</div>
+                        <div class="text">Protección</div>
+                        <div class="value">100%</div>
+                    </div>
+                    <div class="floating-card card-2">
+                        <div class="icon">📊</div>
+                        <div class="text">Cumplimiento</div>
+                        <div class="value">LOPDP</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="servicios">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Nuestros Servicios</span>
+                <h2 class="section-title">Portafolio de Servicios</h2>
+                <p class="section-subtitle">Soluciones integrales de protección de datos personales diseñadas específicamente para el sector salud en Ecuador.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="service-number">01</span>
+                    <div class="service-icon">🔍</div>
+                    <h3 class="service-title">Diagnóstico Integral de Riesgo</h3>
+                    <p class="service-description">Radiografía completa del nivel de exposición legal, operativa, tecnológica y reputacional de su organización.</p>
+                    <ul class="service-features">
+                        <li>Evaluación de cumplimiento LOPDP</li>
+                        <li>Análisis de vulnerabilidades</li>
+                        <li>Score de riesgo personalizado</li>
+                        <li>Informe ejecutivo de hallazgos</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <span class="service-number">02</span>
+                    <div class="service-icon">📋</div>
+                    <h3 class="service-title">Plan de Remediación</h3>
+                    <p class="service-description">Diseño estratégico de medidas correctivas sin interrumpir sus operaciones diarias.</p>
+                    <ul class="service-features">
+                        <li>Cambios legales y contractuales</li>
+                        <li>Implementación técnica</li>
+                        <li>Capacitación del personal</li>
+                        <li>Timeline de implementación</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <span class="service-number">03</span>
+                    <div class="service-icon">⚙️</div>
+                    <h3 class="service-title">Integración y Gestión</h3>
+                    <p class="service-description">Coordinación con proveedores certificados para la implementación de soluciones tecnológicas.</p>
+                    <ul class="service-features">
+                        <li>Gestión de proveedores (Partners)</li>
+                        <li>Supervisión de implementación</li>
+                        <li>Seguridad de infraestructura</li>
+                        <li>Backup y recuperación</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <span class="service-number">04</span>
+                    <div class="service-icon">✅</div>
+                    <h3 class="service-title">Monitoreo y Certificación</h3>
+                    <p class="service-description">Auditorías periódicas y servicio de Oficial de Protección de Datos (DPO) externo.</p>
+                    <ul class="service-features">
+                        <li>Auditorías trimestrales/semestrales</li>
+                        <li>Certificado de cumplimiento</li>
+                        <li>DPO externo</li>
+                        <li>Actualizaciones normativas</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process" id="proceso">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Metodología</span>
+                <h2 class="section-title">Nuestro Proceso</h2>
+                <p class="section-subtitle">Un enfoque estructurado en 4 fases para garantizar la protección integral de sus datos.</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">La Radiografía</h3>
+                    <p class="step-description">Diagnóstico completo de riesgos con informe de hallazgos y score personalizado.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">La Receta</h3>
+                    <p class="step-description">Plan de remediación detallado con cambios legales, técnicos y capacitación.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">El Tratamiento</h3>
+                    <p class="step-description">Implementación supervisada con nuestro ecosistema de partners certificados.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">El Seguro</h3>
+                    <p class="step-description">Monitoreo continuo y certificación de cumplimiento con auditorías periódicas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Target Section -->
+    <section class="target">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Sector Salud</span>
+                <h2 class="section-title">¿A Quiénes Servimos?</h2>
+                <p class="section-subtitle">Protegemos a todos los actores del ecosistema de salud en Ecuador.</p>
+            </div>
+            <div class="target-grid">
+                <div class="target-card">
+                    <div class="target-icon">👨‍⚕️</div>
+                    <h3 class="target-title">Médicos</h3>
+                    <p class="target-desc">Protección contra riesgo penal y reputacional personal.</p>
+                </div>
+                <div class="target-card">
+                    <div class="target-icon">🏥</div>
+                    <h3 class="target-title">Clínicas y Hospitales</h3>
+                    <p class="target-desc">Responsabilidad institucional y continuidad operativa.</p>
+                </div>
+                <div class="target-card">
+                    <div class="target-icon">🧪</div>
+                    <h3 class="target-title">Laboratorios</h3>
+                    <p class="target-desc">Prevención de contaminación legal de la red.</p>
+                </div>
+                <div class="target-card">
+                    <div class="target-icon">🛡️</div>
+                    <h3 class="target-title">Aseguradoras</h3>
+                    <p class="target-desc">Gestión de reclamaciones y autorizaciones seguras.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-content">
+            <h2 class="cta-title">¿Conoce el verdadero costo de no gestionar el riesgo?</h2>
+            <p class="cta-text">Las infracciones graves pueden generar multas de hasta el 1% de su facturación bruta anual. La mayor sanción no es pagar; es no poder operar.</p>
+            <a href="#contacto" class="btn btn-primary">Proteja su Organización Hoy</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contacto">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Contacto</span>
+                <h2 class="section-title">¿Listo para proteger sus datos?</h2>
+                <p class="section-subtitle">Complete el formulario y nos pondremos en contacto para agendar su diagnóstico inicial.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Información de Contacto</h3>
+                    <p>Estamos listos para ayudarle a proteger su organización contra riesgos derivados del tratamiento de datos personales.</p>
+                    <ul class="contact-details">
+                        <li>
+                            <span class="icon">📧</span>
+                            <span>info@praxisdata.ec</span>
+                        </li>
+                        <li>
+                            <span class="icon">📱</span>
+                            <span>+593 98 765 4321</span>
+                        </li>
+                        <li>
+                            <span class="icon">📍</span>
+                            <span>Quito, Ecuador</span>
+                        </li>
+                        <li>
+                            <span class="icon">🕐</span>
+                            <span>Lun - Vie: 9:00 - 18:00</span>
+                        </li>
+                    </ul>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nombre Completo *</label>
+                        <input type="text" id="name" name="name" required placeholder="Su nombre completo">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico *</label>
+                        <input type="email" id="email" name="email" required placeholder="su@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Organización</label>
+                        <input type="text" id="company" name="company" placeholder="Nombre de su organización">
+                    </div>
+                    <div class="form-group">
+                        <label for="sector">Sector *</label>
+                        <select id="sector" name="sector" required>
+                            <option value="">Seleccione su sector</option>
+                            <option value="medico">Médico Independiente</option>
+                            <option value="clinica">Clínica</option>
+                            <option value="hospital">Hospital</option>
+                            <option value="laboratorio">Laboratorio</option>
+                            <option value="aseguradora">Aseguradora</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensaje</label>
+                        <textarea id="message" name="message" placeholder="Cuéntenos sobre sus necesidades..."></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">Enviar Mensaje</button>
+                    <div class="form-message" id="formMessage"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="/logo.png" alt="Praxis Data Logo">
+                <span>PRAXIS DATA</span>
+            </div>
+            <ul class="footer-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#proceso">Proceso</a></li>
+                <li><a href="#aplicaciones">Aplicaciones</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <div class="footer-copy">
+                <p>&copy; 2026 Praxis Data. Todos los derechos reservados. | Protegemos tu data, cuidamos tu reputación.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.textContent = '☰';
+            });
+        });
+
+        // Navbar background on scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(10, 22, 40, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(10, 22, 40, 0.95)';
+            }
+        });
+
+        // Contact Form Handler
+        const contactForm = document.getElementById('contactForm');
+        const formMessage = document.getElementById('formMessage');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(contactForm);
+            const data = Object.fromEntries(formData);
+            
+            // Simulate form submission (replace with actual endpoint)
+            // For Netlify, you can add: data-netlify="true" to the form tag
+            
+            // Show success message
+            formMessage.className = 'form-message success';
+            formMessage.textContent = '¡Gracias por contactarnos! Nos pondremos en contacto con usted pronto.';
+            
+            // Reset form
+            contactForm.reset();
+            
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                formMessage.className = 'form-message';
+                formMessage.textContent = '';
+            }, 5000);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe service cards
+        document.querySelectorAll('.service-card, .process-step, .target-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicaciones | Praxis Data</title>
+    <meta name="description" content="Aplicaciones y herramientas de Praxis Data para protección de datos personales.">
+    <link rel="icon" type="image/png" href="/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #0a1628;
+            --color-secondary: #1a2744;
+            --color-accent: #c9a227;
+            --color-accent-light: #e5c76b;
+            --color-text: #f8f9fa;
+            --color-text-muted: #a0aec0;
+            --color-bg: #0a1628;
+            --color-card: #1a2744;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(10, 22, 40, 0.98);
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        .logo-text span {
+            color: var(--color-accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-accent);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--color-text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding-top: 2rem;
+        }
+
+        .page-tag {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(201, 162, 39, 0.1);
+            color: var(--color-accent);
+            font-size: 0.875rem;
+            font-weight: 600;
+            border-radius: 50px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: 1rem;
+        }
+
+        .page-description {
+            font-size: 1.1rem;
+            color: var(--color-text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Apps Grid */
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .app-card {
+            background: var(--color-card);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(201, 162, 39, 0.1);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-accent);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .app-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(201, 162, 39, 0.1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-accent);
+        }
+
+        .app-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 0.75rem;
+        }
+
+        .app-description {
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .app-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(34, 197, 94, 0.1);
+            color: #22c55e;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border-radius: 50px;
+        }
+
+        .app-status::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #22c55e;
+            border-radius: 50%;
+        }
+
+        .app-status.coming-soon {
+            background: rgba(234, 179, 8, 0.1);
+            color: #eab308;
+        }
+
+        .app-status.coming-soon::before {
+            background: #eab308;
+        }
+
+        /* Upload Section */
+        .upload-section {
+            background: var(--color-card);
+            border-radius: 16px;
+            padding: 3rem;
+            border: 2px dashed rgba(201, 162, 39, 0.3);
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .upload-section.dragover {
+            background: rgba(201, 162, 39, 0.05);
+            border-color: var(--color-accent);
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .upload-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 0.75rem;
+        }
+
+        .upload-text {
+            color: var(--color-text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .upload-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--color-accent);
+            color: var(--color-primary);
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .upload-btn:hover {
+            background: var(--color-accent-light);
+            transform: translateY(-2px);
+        }
+
+        .upload-input {
+            display: none;
+        }
+
+        .uploaded-files {
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            background: var(--color-primary);
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+            border: 1px solid rgba(201, 162, 39, 0.1);
+        }
+
+        .file-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .file-icon {
+            font-size: 1.5rem;
+        }
+
+        .file-name {
+            color: var(--color-text);
+            font-weight: 500;
+        }
+
+        .file-size {
+            color: var(--color-text-muted);
+            font-size: 0.85rem;
+        }
+
+        .file-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .file-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .file-btn.view {
+            background: var(--color-accent);
+            color: var(--color-primary);
+        }
+
+        .file-btn.delete {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+        }
+
+        .file-btn:hover {
+            opacity: 0.8;
+        }
+
+        /* Instructions */
+        .instructions {
+            background: var(--color-card);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(201, 162, 39, 0.1);
+        }
+
+        .instructions-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .instructions-list {
+            list-style: none;
+        }
+
+        .instructions-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            color: var(--color-text-muted);
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .instructions-list li::before {
+            content: '→';
+            color: var(--color-accent);
+            font-weight: 700;
+        }
+
+        code {
+            background: var(--color-primary);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: var(--color-accent);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-primary);
+            padding: 2rem;
+            border-top: 1px solid rgba(201, 162, 39, 0.1);
+            text-align: center;
+        }
+
+        .footer-text {
+            color: var(--color-text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-text a {
+            color: var(--color-accent);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--color-primary);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .page-title {
+                font-size: 1.75rem;
+            }
+
+            .main-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .upload-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .apps-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <img src="/logo.png" alt="Praxis Data Logo">
+                <span class="logo-text">PRAXIS <span>DATA</span></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/#servicios">Servicios</a></li>
+                <li><a href="/#proceso">Proceso</a></li>
+                <li><a href="/aplicaciones.html">Aplicaciones</a></li>
+                <li><a href="/#contacto">Contacto</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="page-header">
+            <span class="page-tag">Herramientas</span>
+            <h1 class="page-title">Aplicaciones</h1>
+            <p class="page-description">Herramientas interactivas para diagnóstico, evaluación y gestión de cumplimiento de protección de datos personales.</p>
+        </div>
+
+        <!-- Apps Grid -->
+        <div class="apps-grid">
+            <a href="#" class="app-card" onclick="showComingSoon(event)">
+                <div class="app-icon">📊</div>
+                <h3 class="app-title">Autodiagnóstico de Riesgo</h3>
+                <p class="app-description">Evalúe el nivel de exposición de su organización con nuestro cuestionario interactivo basado en la LOPDP.</p>
+                <span class="app-status coming-soon">Próximamente</span>
+            </a>
+
+            <a href="#" class="app-card" onclick="showComingSoon(event)">
+                <div class="app-icon">📋</div>
+                <h3 class="app-title">Generador de Consentimientos</h3>
+                <p class="app-description">Cree documentos de consentimiento informado adaptados a los requisitos legales ecuatorianos.</p>
+                <span class="app-status coming-soon">Próximamente</span>
+            </a>
+
+            <a href="#" class="app-card" onclick="showComingSoon(event)">
+                <div class="app-icon">🔒</div>
+                <h3 class="app-title">Evaluador de Seguridad</h3>
+                <p class="app-description">Analice la madurez de sus controles de seguridad de la información y reciba recomendaciones.</p>
+                <span class="app-status coming-soon">Próximamente</span>
+            </a>
+
+            <a href="#" class="app-card" onclick="showComingSoon(event)">
+                <div class="app-icon">📅</div>
+                <h3 class="app-title">Calendario de Cumplimiento</h3>
+                <p class="app-description">Planificador de actividades y fechas críticas para mantener el cumplimiento normativo.</p>
+                <span class="app-status coming-soon">Próximamente</span>
+            </a>
+        </div>
+
+        <!-- Upload Section -->
+        <div class="upload-section" id="uploadSection">
+            <div class="upload-icon">📁</div>
+            <h2 class="upload-title">Subir Aplicación HTML</h2>
+            <p class="upload-text">Arrastre y suelte sus archivos HTML aquí, o haga clic para seleccionarlos.</p>
+            <button class="upload-btn" onclick="document.getElementById('fileInput').click()">
+                <span>📤</span> Seleccionar Archivos
+            </button>
+            <input type="file" id="fileInput" class="upload-input" accept=".html,.htm" multiple>
+            
+            <div class="uploaded-files" id="uploadedFiles"></div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="instructions">
+            <h3 class="instructions-title">
+                <span>💡</span> Instrucciones para Subir Aplicaciones
+            </h3>
+            <ul class="instructions-list">
+                <li>Los archivos deben tener extensión <code>.html</code> o <code>.htm</code></li>
+                <li>Asegúrese de que su aplicación sea autocontenida (CSS y JS inline)</li>
+                <li>Para aplicaciones con múltiples archivos, comprímalos en un ZIP</li>
+                <li>En Netlify, puede arrastrar su carpeta de aplicación directamente al panel de deploy</li>
+                <li>Para aplicaciones estáticas simples, use el botón "Seleccionar Archivos" arriba</li>
+            </ul>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p class="footer-text">
+            &copy; 2026 Praxis Data. <a href="/">Volver al Inicio</a>
+        </p>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.textContent = '☰';
+            });
+        });
+
+        // Coming Soon Alert
+        function showComingSoon(event) {
+            event.preventDefault();
+            alert('Esta aplicación estará disponible próximamente. ¡Gracias por su interés!');
+        }
+
+        // File Upload Functionality
+        const uploadSection = document.getElementById('uploadSection');
+        const fileInput = document.getElementById('fileInput');
+        const uploadedFiles = document.getElementById('uploadedFiles');
+        let files = [];
+
+        // Drag and Drop
+        uploadSection.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadSection.classList.add('dragover');
+        });
+
+        uploadSection.addEventListener('dragleave', () => {
+            uploadSection.classList.remove('dragover');
+        });
+
+        uploadSection.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadSection.classList.remove('dragover');
+            handleFiles(e.dataTransfer.files);
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+        });
+
+        function handleFiles(fileList) {
+            for (let file of fileList) {
+                if (file.name.endsWith('.html') || file.name.endsWith('.htm')) {
+                    files.push(file);
+                }
+            }
+            renderFiles();
+        }
+
+        function renderFiles() {
+            uploadedFiles.innerHTML = '';
+            files.forEach((file, index) => {
+                const fileItem = document.createElement('div');
+                fileItem.className = 'file-item';
+                fileItem.innerHTML = `
+                    <div class="file-info">
+                        <span class="file-icon">📄</span>
+                        <div>
+                            <div class="file-name">${file.name}</div>
+                            <div class="file-size">${formatFileSize(file.size)}</div>
+                        </div>
+                    </div>
+                    <div class="file-actions">
+                        <button class="file-btn view" onclick="viewFile(${index})">Ver</button>
+                        <button class="file-btn delete" onclick="deleteFile(${index})">Eliminar</button>
+                    </div>
+                `;
+                uploadedFiles.appendChild(fileItem);
+            });
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        function viewFile(index) {
+            const file = files[index];
+            const url = URL.createObjectURL(file);
+            window.open(url, '_blank');
+        }
+
+        function deleteFile(index) {
+            files.splice(index, 1);
+            renderFiles();
+        }
+
+        // Note: For actual deployment to Netlify, you would need to:
+        // 1. Use Netlify's API or drag-and-drop deploy
+        // 2. Or use a form with data-netlify="true" attribute
+        // 3. Or use Netlify CLI for programmatic deployment
+    </script>
+</body>
+</html>
